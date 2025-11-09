@@ -1,8 +1,14 @@
-# Getting Started with Create React App
+# Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, minimalist portfolio website built with React and TailwindCSS, featuring a neon cyber aesthetic.
 
-## Available Scripts
+## Tech Stack
+
+- React.js
+- TailwindCSS
+- Modern JavaScript (ES6+)
+
+## Features
 
 In the project directory, you can run:
 
@@ -68,3 +74,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Portfolio
+this is my portfolio site
+>>>>>>> a64eda2293a91f4e363cc0e1b2dca0d98a247491
