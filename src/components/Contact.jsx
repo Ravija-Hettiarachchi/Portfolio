@@ -74,8 +74,8 @@ function Contact() {
             </button>
             <span className="text-soft text-sm">
               Or email me directly at{' '}
-              <a href="mailto:ravija@example.com" className="text-white underline-offset-4 hover:underline">
-                ravija@example.com
+              <a href="mailto:hettiarachchi.ravija@gmail.com" className="text-white underline-offset-4 hover:underline">
+                hettiarachchi.ravija@gmail.com
               </a>
             </span>
           </div>
