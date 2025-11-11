@@ -4,37 +4,59 @@ function Projects() {
   const projects = [
     {
       title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio showcasing my work and skills with a clean design aesthetic.',
+      description:
+        'A modern, responsive portfolio showcasing my work and skills with a calm, immersive design aesthetic.',
     },
     {
       title: 'Dashboard UI',
-      description: 'An intuitive dashboard interface designed for optimal user experience and data visualization.',
+      description:
+        'An intuitive dashboard interface designed for clarity, layered depth, and effortless data exploration.',
     },
     {
       title: 'Mobile App Concept',
-      description: 'A mobile application concept focusing on user-centered design and seamless interactions.',
+      description:
+        'A mobile concept focused on gentle motion, user comfort, and memorable micro-interactions.',
     },
   ];
 
   return (
-    <section id="projects" className="bg-[#0D0D0D] py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#00F6FF] text-center mb-16">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section id="projects" className="relative py-28 px-6">
+      <div className="max-w-6xl mx-auto space-y-14">
+        <div className="text-center space-y-4">
+          <span className="tag">Projects</span>
+          <h2 className="gradient-title text-4xl md:text-5xl font-bold">
+            Selected work with thoughtful detail
+          </h2>
+          <p className="text-soft max-w-2xl mx-auto text-lg">
+            Each project pairs expressive visuals with intentional interactions to create calm, focused experiences.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group p-8 rounded-lg border border-[#00F6FF]/20 bg-[#0D0D0D] hover:border-[#00F6FF]/50 hover:shadow-[0_0_20px_#00F6FF] hover:scale-105 transition-all duration-300 opacity-0 animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
+            <article
+              key={project.title}
+              className="glass-panel hover-lift group flex flex-col justify-between p-8 md:p-10 transition-colors"
             >
-              <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-[#00F6FF] transition-colors duration-300">
-                {project.title}
-              </h3>
-              <p className="text-white/70 leading-relaxed mb-6">{project.description}</p>
-              <button className="px-6 py-2 border border-[#00F6FF] text-[#00F6FF] rounded-lg hover:bg-[#00F6FF] hover:text-[#0D0D0D] hover:shadow-[0_0_15px_#00F6FF] transition-all duration-300">
-                View Project
-              </button>
-            </div>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-semibold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#60a5fa] group-hover:to-[#c084fc] transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.32em] text-white/40">
+                    {`0${index + 1}`}
+                  </span>
+                </div>
+                <p className="text-soft leading-relaxed">{project.description}</p>
+              </div>
+
+              <div className="mt-10 flex items-center justify-between text-sm">
+                <span className="text-white/50">Case Study</span>
+                <button className="button-ghost">
+                  View Details
+                </button>
+              </div>
+            </article>
           ))}
         </div>
       </div>

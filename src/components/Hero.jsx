@@ -1,32 +1,45 @@
-import React from 'react';
+import React from "react";
 
 function Hero() {
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center bg-[#0D0D0D] px-6 relative overflow-hidden">
-      <div className="text-center space-y-8 z-10">
-        {/* Avatar with animated gradient glow */}
-        <div className="relative mx-auto mb-8">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00F6FF] via-[#BC00FF] to-[#00F6FF] opacity-30 blur-2xl animate-pulse"></div>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#00F6FF]/20 to-[#BC00FF]/20 border-2 border-[#00F6FF]/50 flex items-center justify-center backdrop-blur-sm">
-            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-[#0D0D0D] border border-[#00F6FF]/30"></div>
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden"
+    >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 right-6 h-64 w-64 rounded-full bg-gradient-to-br from-[#38bdf8]/10 via-[#c084fc]/25 to-transparent blur-3xl opacity-80 animate-[float_18s_ease-in-out_infinite]" />
+        <div className="absolute bottom-14 left-6 h-72 w-72 rounded-full bg-gradient-to-tr from-[#c084fc]/22 via-[#38bdf8]/18 to-transparent blur-[110px] opacity-70 animate-[float_16s_ease-in-out_infinite_reverse]" />
+      </div>
+
+      <div className="relative max-w-4xl w-full glass-panel px-8 py-16 md:px-16 md:py-20 text-center space-y-12">
+        <div className="flex justify-center">
+          <span className="tag">Front-End Developer</span>
+        </div>
+
+        <div className="relative mx-auto w-32 h-32 md:w-40 md:h-40">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#60a5fa]/40 via-[#c084fc]/30 to-[#7dd3fc]/40 blur-xl opacity-70 animate-[glowPulse_6s_ease-in-out_infinite]" />
+          <div className="relative w-full h-full rounded-full border border-white/10 bg-gradient-to-br from-white/8 to-white/0 backdrop-blur-xl flex items-center justify-center">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#090017] border border-white/10" />
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white opacity-0 animate-fade-in">
-          Hi, I'm <span className="text-[#00F6FF]">Ravija</span>, a Creative Front-End Developer
-        </h1>
-        
-        <div className="space-y-2 text-lg md:text-xl text-white/70 opacity-0 animate-fade-in-delay">
-          <p>Building modern, thoughtful digital experiences</p>
-          <p>that blend creativity with clean, functional design.</p>
+        <div className="space-y-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in">
+            Crafting calming, modern interfaces that feel as good as they look.
+          </h1>
+          <p className="text-soft text-lg md:text-xl leading-relaxed max-w-2xl mx-auto animate-fade-in-delay">
+            I translate thoughtful ideas into immersive digital experiences with subtle motion and a focus on clarity, accessibility, and delight.
+          </p>
         </div>
 
-        <a
-          href="#projects"
-          className="inline-block mt-12 px-8 py-4 border-2 border-[#00F6FF] text-[#00F6FF] font-semibold rounded-lg hover:bg-[#00F6FF] hover:text-[#0D0D0D] hover:shadow-[0_0_25px_#00F6FF] transition-all duration-300 opacity-0 animate-fade-in-delay-2"
-        >
-          View My Work
-        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-delay-2">
+          <a href="#projects" className="button-primary">
+            View My Work
+          </a>
+          <a href="#contact" className="button-ghost">
+            Let's Collaborate
+          </a>
+        </div>
       </div>
     </section>
   );

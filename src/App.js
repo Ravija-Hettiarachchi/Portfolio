@@ -1,23 +1,30 @@
-// src/App.js
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-import './index.css';
+import "./index.css";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0d0d0d]">
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
+    <div className="min-h-screen relative overflow-hidden">
+      <div className="theme-overlay" />
+
+      <div className="pointer-events-none absolute -top-40 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-[#60a5fa]/30 via-[#c084fc]/25 to-transparent blur-3xl opacity-70 animate-[float_12s_ease-in-out_infinite]" />
+      <div className="pointer-events-none absolute top-1/2 right-[-10rem] h-[28rem] w-[28rem] rounded-full bg-gradient-to-bl from-[#c084fc]/35 via-[#60a5fa]/20 to-transparent blur-[130px] opacity-70 animate-[float_18s_ease-in-out_infinite_reverse]" />
+      <div className="pointer-events-none absolute bottom-[-8rem] left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-gradient-to-tl from-[#7dd3fc]/15 via-[#c084fc]/18 to-transparent blur-[120px] opacity-60 animate-[float_20s_ease-in-out_infinite]" />
+
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }

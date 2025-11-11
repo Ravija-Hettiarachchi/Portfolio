@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0D0D0D] backdrop-blur-sm border-b border-white/10">
+    <nav className="sticky top-0 z-50 border-b border-white/5 bg-gradient-to-b from-[#0d0224]/90 via-[#0d0224]/70 to-transparent backdrop-blur-2xl">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-[#00F6FF] shadow-[0_0_15px_#00F6FF]">Ravija</div>
-        
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
-          <a href="#home" className="text-white/90 hover:text-[#00F6FF] transition-all duration-300">Home</a>
-          <a href="#about" className="text-white/90 hover:text-[#00F6FF] transition-all duration-300">About</a>
-          <a href="#projects" className="text-white/90 hover:text-[#00F6FF] transition-all duration-300">Projects</a>
-          <a href="#contact" className="text-white/90 hover:text-[#00F6FF] transition-all duration-300">Contact</a>
+        <div className="text-2xl font-semibold gradient-title drop-shadow-[0_0_18px_rgba(96,165,250,0.25)]">
+          Ravija
         </div>
 
-        {/* Mobile Hamburger Button */}
+        <div className="hidden md:flex items-center space-x-10">
+          <a href="#home" className="nav-link">Home</a>
+          <a href="#about" className="nav-link">About</a>
+          <a href="#projects" className="nav-link">Projects</a>
+          <a href="#contact" className="nav-link">Contact</a>
+        </div>
+
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden rounded-full border border-white/5 bg-white/5 p-2 text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -40,38 +40,25 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#0D0D0D] border-t border-white/10">
-          <div className="px-6 py-4 space-y-4">
-            <a
-              href="#home"
-              className="block text-white/90 hover:text-[#00F6FF] transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="block text-white/90 hover:text-[#00F6FF] transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className="block text-white/90 hover:text-[#00F6FF] transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              className="block text-white/90 hover:text-[#00F6FF] transition-all duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </a>
+        <div className="md:hidden border-t border-white/5 bg-gradient-to-b from-[#13052f]/90 via-[#0f0424]/85 to-[#080016]/90 backdrop-blur-xl">
+          <div className="px-6 py-5 space-y-4 text-base">
+            {[
+              { href: "#home", label: "Home" },
+              { href: "#about", label: "About" },
+              { href: "#projects", label: "Projects" },
+              { href: "#contact", label: "Contact" },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 px-4 py-3 text-white/80 transition duration-300 hover:border-white/15 hover:bg-white/10 hover:text-white"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>{item.label}</span>
+                <span className="text-xs uppercase tracking-widest text-white/40">Go</span>
+              </a>
+            ))}
           </div>
         </div>
       )}
