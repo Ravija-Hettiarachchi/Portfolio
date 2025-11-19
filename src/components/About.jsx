@@ -1,78 +1,76 @@
 import React from "react";
 
-const highlights = [
-  "B.ICT (Hons) undergraduate specializing in network & cybersecurity",
-  "Operationalizes zero-trust principles across cloud and on-prem estates",
-  "Delivers accessible dashboards for analysts, leadership, and clients",
-];
-
-const credentials = [
-  { label: "Incidents Resolved", value: "245+" },
-  { label: "Automation Routines", value: "68" },
-  { label: "Security Audits", value: "38" },
+const pillars = [
+  {
+    title: "Human-first security",
+    badge: "Human-first",
+    detail:
+      "Pair class projects with UX-style interviews so even beginner security tools feel friendly for classmates and mentors.",
+    stat: "3 days",
+    statLabel: "idea → prototype",
+  },
+  {
+    title: "Automation mindset",
+    badge: "Automation",
+    detail:
+      "Build small Python and JavaScript helpers to remove repetitive lab steps and keep focus on the learning goal.",
+    stat: "10+",
+    statLabel: "mini automations built",
+  },
+  {
+    title: "Coaching & clarity",
+    badge: "Coaching",
+    detail:
+      "Turn every lesson into blog recaps and peer study guides so friends can follow along with fewer blockers.",
+    stat: "6",
+    statLabel: "peer workshops led",
+  },
 ];
 
 function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] px-6 py-28 text-white"
+      className="relative overflow-hidden bg-gradient-to-b from-[#080301] via-[#0d0401] to-[#120601] px-6 py-24 text-white"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent opacity-60" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-60" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-40" />
-        <div className="absolute left-1/2 top-16 h-72 w-72 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,138,61,0.28),transparent_60%)] blur-3xl opacity-65" />
+        <div className="absolute left-10 top-16 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(255,138,61,0.22),transparent_70%)] blur-3xl opacity-60" />
+        <div className="absolute right-4 bottom-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(255,176,122,0.18),transparent_70%)] blur-3xl opacity-50" />
       </div>
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-16 lg:flex-row">
-        <div className="relative flex w-full max-w-md flex-none justify-center">
-          <div className="absolute -inset-6 rounded-[32px] bg-[radial-gradient(circle,rgba(255,138,61,0.28),transparent_65%)] blur-3xl opacity-80" />
-          <div className="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-[#1a0902] via-[#130601] to-[#090301] shadow-[0_35px_120px_rgba(18,7,3,0.65)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,138,61,0.25),transparent_65%)] opacity-70" />
-            <img
-              src="/profile-photo.jpg"
-              alt="Ravija Hettiarachchi"
-              className="relative h-full w-full object-cover"
-            />
-            <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 rounded-full border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-xl">
-              <p className="text-xs uppercase tracking-[0.45em] text-white/60">Cyber Operations Lead</p>
-              <p className="text-sm font-semibold text-white">Ravija Hettiarachchi</p>
-            </div>
-          </div>
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-10 text-center">
+        <div className="space-y-4">
+          <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">About</p>
+          <h2 className="text-3xl font-semibold text-white sm:text-4xl">Secure journeys through curiosity and constant learning</h2>
+          <p className="text-base text-white/70 sm:text-lg">
+            I’m Ravija Hettiarachchi, an undergraduate ICT student and cybersecurity enthusiast.
+            <br className="hidden sm:block" />
+            I focus on learning new technologies every day and turning complex technical ideas into simple, practical solutions that people
+            can actually use.
+          </p>
         </div>
 
-        <div className="flex w-full flex-col gap-10">
-          <div className="space-y-4 text-center lg:text-left">
-            <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Who We Are</p>
-            <h2 className="text-3xl font-semibold text-white sm:text-4xl">
-              Reduce the risk of your workflow. Stay productive, stay protected.
-            </h2>
-            <p className="max-w-2xl text-base text-white/70 sm:text-lg">
-              I blend secure infrastructure thinking with immersive interfaces—helping teams collaborate confidently,
-              automate repetitive response, and keep leadership informed without the noise.
-            </p>
-          </div>
-
-          <ul className="space-y-4">
-            {highlights.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-sm text-white/70">
-                <span className="mt-1 inline-flex h-3 w-3 flex-none items-center justify-center rounded-full bg-gradient-to-r from-[#ff7a32] to-[#ffa149]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {credentials.map((cred) => (
-              <div
-                key={cred.label}
-                className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.05] p-5 text-center shadow-[0_12px_35px_rgba(20,8,3,0.45)]"
-              >
-                <span className="text-2xl font-semibold text-white">{cred.value}</span>
-                <span className="text-xs uppercase tracking-[0.35em] text-white/50">{cred.label}</span>
+        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {pillars.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="group flex flex-col gap-5 rounded-[32px] border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] p-6 text-center shadow-[0_30px_80px_rgba(8,3,1,0.5)] transition duration-300 hover:border-[#ff8a3d]/35 hover:shadow-[0_40px_90px_rgba(255,138,61,0.35)]"
+            >
+              <span className="mx-auto inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#ff7a32] to-[#ffa149] px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-black shadow-[0_20px_50px_rgba(255,122,50,0.35)]">
+                {pillar.badge}
+              </span>
+              <div>
+                <p className="text-[0.65rem] uppercase tracking-[0.35em] text-white/50">{pillar.statLabel}</p>
+                <p className="text-4xl font-semibold text-white">{pillar.stat}</p>
               </div>
-            ))}
-          </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white">{pillar.title}</h3>
+                <p className="mt-3 text-sm text-white/80">{pillar.detail}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

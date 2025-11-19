@@ -6,6 +6,7 @@ function Navbar() {
     { href: "#home", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#about", label: "About" },
+    { href: "#blog", label: "Blog" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -19,10 +20,16 @@ function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(15,6,2,0.85)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(15,6,2,0.9)] backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[95rem] items-center justify-between px-10 py-6">
         <div className="flex items-center gap-3">
-          <span className="text-xl font-semibold text-white">ravija<span className="text-[#ff7a32]">.</span></span>
+          <div className="flex h-14 w-28 items-center justify-start md:h-16 md:w-32">
+            <img
+              src="/mylogo.png"
+              alt="Ravija personal logo"
+              className="h-full w-auto max-w-full object-contain drop-shadow-[0_6px_18px_rgba(255,122,50,0.35)]"
+            />
+          </div>
         </div>
 
         <div className="hidden items-center gap-8 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm text-white/70 md:flex">

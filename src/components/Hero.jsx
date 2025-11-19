@@ -1,4 +1,5 @@
 import React from "react";
+import VisitorCounter from "./VisitorCounter";
 
 function Hero() {
   const techLogos = [
@@ -67,10 +68,37 @@ function Hero() {
     },
   ];
 
+  const mainPalette = [
+    { id: "m1", x: -320, y: -20, size: 150 },
+    { id: "m2", x: -200, y: -60, size: 170 },
+    { id: "m3", x: -80, y: 40, size: 150 },
+    { id: "m4", x: 120, y: -60, size: 190 },
+    { id: "m5", x: 260, y: -10, size: 160 },
+    { id: "m6", x: 360, y: 30, size: 140 },
+    { id: "m7", x: -260, y: 170, size: 150 },
+    { id: "m8", x: -120, y: 210, size: 140 },
+    { id: "m9", x: 60, y: 210, size: 150 },
+    { id: "m10", x: 220, y: 170, size: 140 },
+  ];
+
+  const miniPalette = [
+    { id: "s1", x: -420, y: -10, size: 100 },
+    { id: "s2", x: -340, y: 110, size: 95 },
+    { id: "s3", x: -240, y: -150, size: 90 },
+    { id: "s4", x: -40, y: -160, size: 90 },
+    { id: "s5", x: 160, y: -150, size: 95 },
+    { id: "s6", x: 330, y: -40, size: 100 },
+    { id: "s7", x: 420, y: 120, size: 95 },
+    { id: "s8", x: 300, y: 280, size: 90 },
+    { id: "s9", x: 100, y: 320, size: 90 },
+    { id: "s10", x: -120, y: 320, size: 100 },
+    { id: "s11", x: -300, y: 260, size: 95 },
+  ];
+
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-[#120601] via-[#190b04] to-[#0a0401] px-6 pb-24 pt-32 text-white sm:pt-40"
+      className="relative overflow-hidden bg-gradient-to-br from-[#120601] via-[#190b04] to-[#0a0401] px-6 pb-20 pt-12 text-white sm:pt-20"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,138,61,0.28),transparent_65%)] blur-3xl opacity-70" />
@@ -79,8 +107,8 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#120601] via-transparent to-transparent" />
       </div>
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-14 lg:flex-row lg:items-center lg:gap-16">
-        <div className="flex w-full flex-1 flex-col gap-8 text-center lg:text-left">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-12">
+        <div className="flex w-full flex-1 flex-col gap-6 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 self-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.55em] text-white/70 lg:self-start">
             Hey, I am <span className="font-semibold text-[#ff7a32]">Ravija</span>
           </div>
@@ -91,7 +119,7 @@ function Hero() {
             I craft resilient digital experiences where automation, security, and design meet. Let’s build interfaces that feel lightning fast while keeping every interaction protected.
           </p>
 
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-start">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-start">
             <a
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#ff7a32] to-[#ffa149] px-8 py-3 text-sm font-semibold text-[#1c0902] shadow-[0_18px_40px_rgba(255,122,50,0.45)] transition hover:scale-[1.02]"
@@ -106,44 +134,49 @@ function Hero() {
             </a>
           </div>
 
-          <div className="relative mt-4 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 text-left shadow-[0_18px_48px_rgba(12,6,2,0.45)] sm:max-w-lg">
-            <span className="text-4xl text-[#ff8a3d]">“</span>
-            <p className="text-sm text-white/70">
-              Ravija translated our threat detection requirements into a beautiful dashboard with near-zero latency. The workflows just make sense.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#ff7a32] to-[#ffa149]" />
-              <div className="text-xs">
-                <p className="font-semibold text-white">Carolina Abott</p>
-                <p className="uppercase tracking-[0.35em] text-white/40">Business Owner</p>
-              </div>
-            </div>
+          <div className="mt-4 flex w-full justify-center lg:justify-start">
+            <VisitorCounter />
           </div>
         </div>
 
-        <div className="relative flex w-full flex-1 justify-center">
-          <div className="relative flex h-[420px] w-[420px] max-w-full items-center justify-center">
-            <div className="absolute inset-0 rounded-[44px] bg-gradient-to-br from-[#1c0902] via-[#110602] to-[#080301] shadow-[0_45px_120px_rgba(14,6,2,0.75)]" />
-            <div className="absolute inset-[6%] rounded-[36px] border border-white/10 bg-gradient-to-br from-white/10 to-white/0 backdrop-blur-3xl" />
-            <img
-              src="/hero-avatar.png"
-              alt="Ravija hero avatar"
-              className="relative h-[90%] w-[90%] object-contain"
-            />
-            <div className="absolute -right-6 top-10 flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-5 py-2 text-xs uppercase tracking-[0.35em] text-white/70 backdrop-blur-xl">
-              Available for work
+        <div className="relative flex w-full flex-1 justify-center lg:justify-end lg:items-start">
+          <div className="relative flex h-[420px] w/[420px] max-w-full items-center justify-center -translate-y-12 sm:-translate-y-20 -translate-x-8 sm:-translate-x-14 lg:-translate-y-12 lg:translate-x-20">
+            <div className="profile-frame">
+              <div className="hex-palette">
+                {mainPalette.map((hex) => (
+                  <span
+                    key={hex.id}
+                    className="hex-palette__hex hex-palette__hex--bold"
+                    style={{
+                      left: `calc(50% + ${hex.x}px)`,
+                      top: `calc(50% + ${hex.y}px)`,
+                      width: `${hex.size}px`,
+                    }}
+                  />
+                ))}
+                {miniPalette.map((hex) => (
+                  <span
+                    key={hex.id}
+                    className="hex-palette__hex hex-palette__hex--mini"
+                    style={{
+                      left: `calc(50% + ${hex.x}px)`,
+                      top: `calc(50% + ${hex.y}px)`,
+                      width: `${hex.size}px`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className="profile-frame__core">
+                <span className="hex-ring hex-ring--outer" />
+                <span className="hex-ring hex-ring--inner" />
+                <div className="hex-avatar">
+                  <img src="/profil-pic.jpg" alt="Ravija hero avatar" />
+                </div>
+              </div>
+
             </div>
-            <div className="absolute -left-10 bottom-10 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs uppercase tracking-[0.35em] text-white/70 backdrop-blur-xl">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff8a3d]" />
-              5+ years secured builds
-            </div>
-            <div className="pointer-events-none absolute inset-0">
-              {techLogos.map((logo) => (
-                <span key={logo.id} className={`floating-skill ${logo.className}`}>
-                  {logo.icon}
-                </span>
-              ))}
-            </div>
+
           </div>
         </div>
       </div>

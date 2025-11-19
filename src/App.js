@@ -2,15 +2,18 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Blog from "./components/Blog";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
 
 import "./index.css";
 
 function App() {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <Preloader />
       <div className="theme-overlay" />
 
       <div className="pointer-events-none absolute -top-40 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-[#ff7a32]/30 via-[#ffa149]/22 to-transparent blur-3xl opacity-70 animate-[float_12s_ease-in-out_infinite]" />
@@ -22,6 +25,7 @@ function App() {
         <Hero />
         <Projects />
         <About />
+        <Blog />
         <Contact />
         <Footer />
       </div>
