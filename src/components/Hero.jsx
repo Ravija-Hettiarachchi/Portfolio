@@ -139,10 +139,10 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative flex w-full flex-1 justify-center lg:justify-end lg:items-start">
-          <div className="relative flex h-[420px] w/[420px] max-w-full items-center justify-center -translate-y-12 sm:-translate-y-20 -translate-x-8 sm:-translate-x-14 lg:-translate-y-12 lg:translate-x-20">
+        <div className="relative flex w-full flex-1 justify-center overflow-hidden sm:overflow-visible lg:items-start lg:justify-end">
+          <div className="relative flex h-[320px] w-[320px] max-w-full items-center justify-center -translate-y-4 sm:h-[400px] sm:w-[400px] sm:-translate-y-12 lg:h-[440px] lg:w-[440px] lg:translate-x-16">
             <div className="profile-frame">
-              <div className="hex-palette">
+              <div className="hex-palette hidden sm:block">
                 {mainPalette.map((hex) => (
                   <span
                     key={hex.id}

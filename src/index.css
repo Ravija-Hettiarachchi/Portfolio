@@ -825,6 +825,31 @@ code {
   }
 }
 
+@media (max-width: 640px) {
+  body::before,
+  body::after {
+    width: 70vw;
+    max-width: 380px;
+    filter: blur(110px);
+  }
+
+  .profile-frame {
+    width: min(280px, 76vw);
+  }
+
+  .profile-frame::before {
+    inset: -8%;
+  }
+
+  .profile-frame__core {
+    width: 82%;
+  }
+
+  .hex-palette {
+    display: none;
+  }
+}
+
 @keyframes skillFloat {
   0% {
     transform: translate3d(0, 0, 0);
