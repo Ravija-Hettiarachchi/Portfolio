@@ -64,14 +64,14 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28 px-6">
+    <section id="contact" className="relative px-4 py-20 sm:px-6 sm:py-28">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-8 top-1/4 h-60 w-60 rounded-full bg-gradient-to-br from-[#ff8a3d]/25 via-transparent to-transparent blur-3xl opacity-70" />
         <div className="absolute right-5 bottom-8 h-72 w-72 rounded-full bg-gradient-to-t from-[#ffb07a]/20 via-transparent to-transparent blur-[120px] opacity-80" />
       </div>
 
-      <div className="max-w-3xl mx-auto glass-panel px-8 py-16 md:px-16 md:py-20 relative">
-        <div className="absolute inset-x-12 -top-7 flex justify-center">
+      <div className="relative mx-auto max-w-3xl glass-panel px-6 py-14 sm:px-10 sm:py-16 md:px-16 md:py-20">
+        <div className="absolute inset-x-8 -top-7 flex justify-center sm:inset-x-12">
           <span className="tag">Contact</span>
         </div>
 
@@ -82,7 +82,7 @@ function Contact() {
           </p>
         </div>
 
-        <div className="mb-10 flex items-center justify-center gap-4 md:gap-6">
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-4">
           {socialLinks.map((item) => (
             <a
               key={item.label}
@@ -135,7 +135,7 @@ function Contact() {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-4">
+          <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center">
             <button type="submit" className="button-primary w-full sm:w-auto">
               Send Message
             </button>

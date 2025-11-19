@@ -98,7 +98,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-gradient-to-br from-[#120601] via-[#190b04] to-[#0a0401] px-6 pb-20 pt-12 text-white sm:pt-20"
+      className="relative overflow-hidden bg-gradient-to-br from-[#120601] via-[#190b04] to-[#0a0401] px-4 pb-16 pt-16 text-white sm:px-6 sm:pb-20 sm:pt-20"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 left-1/2 h-[680px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,138,61,0.28),transparent_65%)] blur-3xl opacity-70" />
@@ -107,15 +107,15 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#120601] via-transparent to-transparent" />
       </div>
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-12">
-        <div className="flex w-full flex-1 flex-col gap-6 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 self-center rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.55em] text-white/70 lg:self-start">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:gap-12">
+        <div className="flex w-full flex-1 flex-col gap-5 text-center lg:gap-6 lg:text-left">
+          <div className="inline-flex items-center gap-2 self-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.6rem] uppercase tracking-[0.45em] text-white/70 sm:px-5 sm:text-xs lg:self-start">
             Hey, I am <span className="font-semibold text-[#ff7a32]">Ravija</span>
           </div>
-          <h1 className="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+          <h1 className="text-3xl font-semibold leading-tight sm:text-5xl md:text-6xl">
             Cybersecurity Enthusiest &<span className="block text-[#ff8a3d]">Designer</span>
           </h1>
-          <p className="max-w-xl text-base text-white/70 sm:text-lg">
+          <p className="mx-auto max-w-xl text-base text-white/70 sm:text-lg lg:mx-0">
             I craft resilient digital experiences where automation, security, and design meet. Let’s build interfaces that feel lightning fast while keeping every interaction protected.
           </p>
 
@@ -134,13 +134,13 @@ function Hero() {
             </a>
           </div>
 
-          <div className="mt-4 flex w-full justify-center lg:justify-start">
+          <div className="mt-2 flex w-full justify-center lg:justify-start">
             <VisitorCounter />
           </div>
         </div>
 
-        <div className="relative flex w-full flex-1 justify-center overflow-hidden sm:overflow-visible lg:items-start lg:justify-end">
-          <div className="relative flex h-[320px] w-[320px] max-w-full items-center justify-center -translate-y-4 sm:h-[400px] sm:w-[400px] sm:-translate-y-12 lg:h-[440px] lg:w-[440px] lg:translate-x-16">
+        <div className="relative flex w-full flex-1 justify-center overflow-hidden px-2 sm:px-0 sm:overflow-visible lg:items-start lg:justify-end">
+          <div className="relative flex h-[300px] w-[300px] max-w-full items-center justify-center -translate-y-2 sm:h-[380px] sm:w-[380px] sm:-translate-y-10 lg:h-[440px] lg:w-[440px] lg:translate-x-16">
             <div className="profile-frame">
               <div className="hex-palette hidden sm:block">
                 {mainPalette.map((hex) => (

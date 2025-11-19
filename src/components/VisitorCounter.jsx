@@ -38,7 +38,7 @@ function VisitorCounter() {
   const description = error ? "Counter temporarily unavailable" : "people have explored this portfolio";
 
   return (
-    <div className="inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-6 py-4 text-left shadow-[0_18px_40px_rgba(5,2,1,0.45)] backdrop-blur">
+    <div className="inline-flex flex-col items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 text-center shadow-[0_18px_40px_rgba(5,2,1,0.45)] backdrop-blur sm:flex-row sm:items-center sm:gap-4 sm:text-left">
       <span className="text-3xl font-semibold text-[#ff8a3d]">{displayValue}</span>
       <div className="flex flex-col leading-snug text-white/75">
         <span className="text-xs uppercase tracking-[0.45em] text-white/45">Visitors</span>

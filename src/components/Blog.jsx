@@ -28,7 +28,7 @@ function Blog() {
   return (
     <section
       id="blog"
-      className="relative overflow-hidden bg-gradient-to-b from-[#120601] via-[#0d0401] to-[#080301] px-6 py-24 text-white"
+      className="relative overflow-hidden bg-gradient-to-b from-[#120601] via-[#0d0401] to-[#080301] px-4 py-20 text-white sm:px-6 sm:py-24"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-60" />
@@ -47,11 +47,11 @@ function Blog() {
           </p>
         </div>
 
-        <div className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((post) => (
             <article
               key={post.title}
-              className="min-w-[260px] max-w-[260px] snap-start rounded-2xl border border-white/10 bg-white/[0.05] p-4 shadow-[0_18px_40px_rgba(5,2,1,0.5)]"
+              className="rounded-2xl border border-white/10 bg-white/[0.05] p-5 shadow-[0_18px_40px_rgba(5,2,1,0.5)]"
             >
               <p className="text-[0.65rem] uppercase tracking-[0.35em] text-white/50">{post.date}</p>
               <h3 className="mt-2 text-base font-semibold text-white">{post.title}</h3>

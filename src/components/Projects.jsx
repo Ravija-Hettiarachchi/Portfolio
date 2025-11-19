@@ -113,7 +113,7 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] px-6 py-28 text-white"
+      className="relative overflow-hidden bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] px-4 py-20 text-white sm:px-6 sm:py-28"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-70" />
@@ -121,10 +121,10 @@ function Projects() {
         <div className="absolute left-1/2 top-32 h-64 w-64 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,138,61,0.28),transparent_60%)] blur-3xl opacity-55" />
       </div>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-16">
-        <section className="grid grid-cols-1 gap-12">
-          <div className="order-1 rounded-3xl border border-white/10 bg-white/[0.04] p-8 shadow-[0_24px_60px_rgba(18,7,3,0.45)] lg:order-1">
-            <div className="flex flex-col gap-2 text-center">
+      <div className="mx-auto flex max-w-6xl flex-col gap-12">
+        <section className="grid grid-cols-1 gap-10">
+          <div className="order-1 rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-center shadow-[0_24px_60px_rgba(18,7,3,0.45)] sm:p-8 lg:order-1">
+            <div className="flex flex-col gap-2">
               <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Capabilities</p>
               <h3 className="text-2xl font-semibold text-white">Stacks I reach for daily</h3>
               <p className="text-sm text-white/65">
@@ -132,7 +132,7 @@ function Projects() {
               </p>
             </div>
 
-            <div className="mt-8 flex w-full flex-wrap justify-center gap-4">
+            <div className="mt-8 flex w-full flex-wrap justify-center gap-3 sm:gap-4">
               {toolkits.map(({ name, iconUrl, accent }) => (
                 <div
                   key={name}
@@ -157,7 +157,7 @@ function Projects() {
             </div>
           </div>
 
-          <div className="order-2 flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/[0.02] p-8 shadow-[0_24px_60px_rgba(18,7,3,0.45)] lg:order-2">
+          <div className="order-2 flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/[0.02] p-6 shadow-[0_24px_60px_rgba(18,7,3,0.45)] sm:p-8 lg:order-2">
             <div className="text-center">
               <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Projects</p>
               <h3 className="text-2xl font-semibold text-white">Selected builds that secure and delight</h3>

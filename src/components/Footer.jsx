@@ -2,8 +2,8 @@ import React from 'react';
 
 function Footer() {
   return (
-    <footer className="relative px-6 pb-12 pt-16">
-      <div className="max-w-6xl mx-auto space-y-8 text-center">
+    <footer className="relative px-4 pb-12 pt-16 sm:px-6">
+      <div className="mx-auto max-w-6xl space-y-8 text-center">
         <div className="soft-divider" />
         <p className="text-soft text-sm">
           <span className="group relative inline-flex flex-col items-center px-2 py-1">
@@ -13,7 +13,7 @@ function Footer() {
             </span>
           </span>
         </p>
-        <div className="flex justify-center gap-6 text-xs uppercase tracking-[0.4em] text-white/40">
+        <div className="flex flex-wrap justify-center gap-4 text-[0.6rem] uppercase tracking-[0.4em] text-white/40 sm:gap-6 sm:text-xs">
           <a href="#projects" className="transition-colors hover:text-white">
             Projects
           </a>
