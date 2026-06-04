@@ -1,19 +1,32 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Blog from "./components/Blog";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Preloader from "./components/Preloader";
+"use client";
 
-import "./index.css";
+import React, { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import About from "../components/About";
+import Projects from "../components/Projects";
+import Photography from "../components/Photography";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
+import Preloader from "../components/Preloader";
 
-function App() {
+export default function Home() {
+  useEffect(() => {
+    const updateMousePos = (e) => {
+      document.documentElement.style.setProperty("--mouse-x", `${e.clientX}px`);
+      document.documentElement.style.setProperty("--mouse-y", `${e.clientY}px`);
+    };
+
+    window.addEventListener("mousemove", updateMousePos);
+    return () => {
+      window.removeEventListener("mousemove", updateMousePos);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       <Preloader />
+      <div className="cursor-aura" />
       <div className="theme-overlay" />
 
       <div className="pointer-events-none absolute -top-40 -left-32 h-96 w-96 rounded-full bg-gradient-to-br from-[#ff7a32]/30 via-[#ffa149]/22 to-transparent blur-3xl opacity-70 animate-[float_12s_ease-in-out_infinite]" />
@@ -25,12 +38,10 @@ function App() {
         <Hero />
         <Projects />
         <About />
-        <Blog />
+        <Photography />
         <Contact />
         <Footer />
       </div>
     </div>
   );
 }
-
-export default App;

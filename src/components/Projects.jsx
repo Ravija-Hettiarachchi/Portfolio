@@ -1,4 +1,6 @@
 import React from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
+
 const projects = [
   {
     title: "Lumos",
@@ -110,10 +112,21 @@ const toolkits = [
 ];
 
 function Projects() {
+  const revealRef = useScrollReveal();
+
+  const handleCardMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--card-mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--card-mouse-y", `${y}px`);
+  };
+
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] px-4 py-20 text-white sm:px-6 sm:py-28"
+      ref={revealRef}
+      className="relative overflow-hidden bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] px-4 py-12 text-white sm:px-6 sm:py-16"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-70" />
@@ -125,33 +138,35 @@ function Projects() {
         <section className="grid grid-cols-1 gap-10">
           <div className="order-1 rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-center shadow-[0_24px_60px_rgba(18,7,3,0.45)] sm:p-8 lg:order-1">
             <div className="flex flex-col gap-2">
-              <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Capabilities</p>
-              <h3 className="text-2xl font-semibold text-white">Stacks I reach for daily</h3>
-              <p className="text-sm text-white/65">
+              <p className="reveal-on-scroll delay-100 text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Capabilities</p>
+              <h3 className="reveal-on-scroll delay-200 text-2xl font-semibold text-white">Stacks I reach for daily</h3>
+              <p className="reveal-on-scroll delay-300 text-sm text-white/65">
                 Languages, frameworks, and platforms that let me move from detection ideas to production-grade interfaces.
               </p>
             </div>
 
-            <div className="mt-8 flex w-full flex-wrap justify-center gap-3 sm:gap-4">
-              {toolkits.map(({ name, iconUrl, accent }) => (
+            <div className="mt-8 hex-tech-grid">
+              {toolkits.map(({ name, iconUrl, accent }, index) => (
                 <div
                   key={name}
-                  className="group relative w-36 md:w-40 flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-center text-xs text-white/70 shadow-[0_16px_38px_rgba(5,2,1,0.45)] transition duration-300 hover:border-white/25 hover:text-white"
+                  className={`hex-tech-card group reveal-on-scroll delay-${(index % 4 + 1) * 100}`}
+                  style={{
+                    "--brand-color-top": accent.top,
+                    "--brand-color-bottom": accent.bottom,
+                    "--brand-glow": accent.glow,
+                  }}
                 >
-                  <span
-                    className="relative flex h-18 w-18 items-center justify-center rounded-[20px] border border-white/10 text-white transition duration-500 group-hover:-translate-y-1 group-hover:scale-105"
-                    style={{
-                      boxShadow: `0 12px 30px ${accent.shadow}, 0 0 12px ${accent.glow}`,
-                    }}
-                  >
+                  <div className="hex-tech-inner">
                     <img
                       src={iconUrl}
-                      alt={`${name} official 3D icon`}
+                      alt={`${name} icon`}
                       loading="lazy"
-                      className="h-10 w-10 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition duration-500 group-hover:scale-110"
+                      className="h-10 w-10 object-contain drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)] transition duration-500 group-hover:scale-110"
                     />
-                  </span>
-                  <p className="text-sm font-semibold text-white">{name}</p>
+                    <p className="text-[11px] font-bold tracking-wider text-white/60 group-hover:text-white uppercase transition duration-300">
+                      {name}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -159,18 +174,19 @@ function Projects() {
 
           <div className="order-2 flex flex-col gap-6 rounded-3xl border border-white/10 bg-white/[0.02] p-6 shadow-[0_24px_60px_rgba(18,7,3,0.45)] sm:p-8 lg:order-2">
             <div className="text-center">
-              <p className="text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Projects</p>
-              <h3 className="text-2xl font-semibold text-white">Selected builds that secure and delight</h3>
-              <p className="text-sm text-white/70">
+              <p className="reveal-on-scroll delay-100 text-xs uppercase tracking-[0.5em] text-[#ff8a3d]">Projects</p>
+              <h3 className="reveal-on-scroll delay-200 text-2xl font-semibold text-white">Selected builds that secure and delight</h3>
+              <p className="reveal-on-scroll delay-300 text-sm text-white/70">
                 Highlighting security automation and experience layers I shepherd from concept to adoption.
               </p>
             </div>
 
             <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2">
-              {projects.map((project) => (
+              {projects.map((project, index) => (
                 <article
                   key={project.title}
-                  className="group flex h-full min-h-[220px] flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 text-center shadow-[0_24px_60px_rgba(18,7,3,0.55)] transition duration-300 hover:border-transparent hover:bg-gradient-to-br hover:from-[#ff7a32]/20 hover:to-[#ffa149]/15 hover:shadow-[0_30px_80px_rgba(255,122,50,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8a3d]/60"
+                  onMouseMove={handleCardMouseMove}
+                  className={`group flex h-full min-h-[220px] flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-6 text-center shadow-[0_24px_60px_rgba(18,7,3,0.55)] interactive-card reveal-on-scroll delay-${(index + 1) * 150} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff8a3d]/60`}
                 >
                   <div className="flex items-center justify-center gap-3 text-white">
                     <span className="text-2xl">{project.icon}</span>
@@ -191,11 +207,9 @@ function Projects() {
             </div>
           </div>
         </section>
-
       </div>
     </section>
   );
 }
 
 export default Projects;
-

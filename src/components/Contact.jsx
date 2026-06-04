@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import useScrollReveal from "../hooks/useScrollReveal";
 
 function Contact() {
+  const revealRef = useScrollReveal();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -63,14 +65,25 @@ function Contact() {
     console.log('Form submitted:', formData);
   };
 
+  const handleCardMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--card-mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--card-mouse-y", `${y}px`);
+  };
+
   return (
-    <section id="contact" className="relative px-4 py-20 sm:px-6 sm:py-28">
+    <section id="contact" ref={revealRef} className="relative px-4 py-12 sm:px-6 sm:py-16">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-8 top-1/4 h-60 w-60 rounded-full bg-gradient-to-br from-[#ff8a3d]/25 via-transparent to-transparent blur-3xl opacity-70" />
         <div className="absolute right-5 bottom-8 h-72 w-72 rounded-full bg-gradient-to-t from-[#ffb07a]/20 via-transparent to-transparent blur-[120px] opacity-80" />
       </div>
 
-      <div className="relative mx-auto max-w-3xl glass-panel px-6 py-14 sm:px-10 sm:py-16 md:px-16 md:py-20">
+      <div
+        onMouseMove={handleCardMouseMove}
+        className="relative mx-auto max-w-3xl glass-panel interactive-card reveal-on-scroll px-6 py-10 sm:px-8 sm:py-12 md:px-12 md:py-14"
+      >
         <div className="absolute inset-x-8 -top-7 flex justify-center sm:inset-x-12">
           <span className="tag">Contact</span>
         </div>
@@ -109,8 +122,8 @@ function Contact() {
           {[
             { name: 'name', type: 'text', placeholder: 'Name' },
             { name: 'email', type: 'email', placeholder: 'Email' },
-          ].map((field) => (
-            <div key={field.name} className="group relative">
+          ].map((field, index) => (
+            <div key={field.name} className={`group relative reveal-on-scroll delay-${(index + 1) * 100}`}>
               <span className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-300 group-focus-within:opacity-100" />
               <input
                 type={field.type}
@@ -123,7 +136,7 @@ function Contact() {
             </div>
           ))}
 
-          <div className="group relative">
+          <div className="group relative reveal-on-scroll delay-300">
             <span className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-300 group-focus-within:opacity-100" />
             <textarea
               name="message"
@@ -135,7 +148,7 @@ function Contact() {
             />
           </div>
 
-          <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center reveal-on-scroll delay-400">
             <button type="submit" className="button-primary w-full sm:w-auto">
               Send Message
             </button>

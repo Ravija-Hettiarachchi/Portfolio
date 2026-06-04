@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoFailed, setLogoFailed] = useState(false);
   const navItems = [
     { href: "#home", label: "Home" },
     { href: "#projects", label: "Projects" },
     { href: "#about", label: "About" },
-    { href: "#blog", label: "Blog" },
+    { href: "#photography", label: "Photography" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -23,12 +24,41 @@ function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(15,6,2,0.9)] backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-[95rem] items-center justify-between px-5 py-5 sm:px-8 md:px-10 md:py-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-14 w-28 items-center justify-start md:h-16 md:w-32">
-            <img
-              src="/mylogo.png"
-              alt="Ravija personal logo"
-              className="h-full w-auto max-w-full object-contain drop-shadow-[0_6px_18px_rgba(255,122,50,0.35)]"
-            />
+          <div className="flex h-14 items-center justify-start md:h-16">
+            {!logoFailed ? (
+              <img
+                src="/mylogo.png"
+                onError={() => setLogoFailed(true)}
+                alt="Ravija personal logo"
+                className="h-full w-auto max-w-full object-contain drop-shadow-[0_6px_18px_rgba(255,122,50,0.35)]"
+              />
+            ) : (
+              <div className="flex items-center gap-2.5 select-none">
+                <svg
+                  className="h-9 w-9 text-[#ff7a32] filter drop-shadow-[0_0_10px_rgba(255,122,50,0.55)]"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polygon
+                    points="50,5 90,28 90,72 50,95 10,72 10,28"
+                    stroke="currentColor"
+                    strokeWidth="6"
+                    fill="rgba(255,122,50,0.12)"
+                  />
+                  <path
+                    d="M38,30 H55 C63,30 63,42 55,42 H38 V65 M38,42 H49 L62,65"
+                    stroke="currentColor"
+                    strokeWidth="6.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-xl font-bold tracking-wider text-white">
+                  RAVIJA<span className="text-[#ff7a32] animate-pulse">.</span>
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

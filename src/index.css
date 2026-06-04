@@ -474,20 +474,7 @@ code {
     animation: orbWave 18s linear infinite;
   }
 
-  .floating-skill {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.85rem;
-    border-radius: 999px;
-    background: rgba(24, 10, 3, 0.8);
-    border: 1px solid rgba(255, 138, 61, 0.35);
-    box-shadow: 0 18px 38px rgba(12, 5, 2, 0.55);
-    backdrop-filter: blur(10px);
-    animation: skillFloat 8s ease-in-out infinite;
-    mix-blend-mode: screen;
-  }
+
 
   .profile-frame {
     position: relative;
@@ -496,7 +483,13 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    perspective: 1000px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  }
+
+  .profile-frame:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: drop-shadow(0 15px 35px rgba(255, 122, 50, 0.15));
   }
 
   .profile-frame__core {
@@ -507,6 +500,8 @@ code {
     align-items: center;
     justify-content: center;
     z-index: 5;
+    transform-style: preserve-3d;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .hex-avatar {
@@ -517,6 +512,13 @@ code {
     overflow: hidden;
     border: 2px solid rgba(255, 199, 140, 0.8);
     box-shadow: 0 35px 85px rgba(5, 2, 1, 0.9), inset 0 0 25px rgba(255, 255, 255, 0.12);
+    transform: translateZ(30px);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .profile-frame:hover .hex-avatar {
+    border-color: var(--accent-primary);
+    box-shadow: 0 45px 95px rgba(255, 122, 50, 0.25), 0 0 35px rgba(255, 122, 50, 0.2);
   }
 
   .hex-avatar img {
@@ -524,26 +526,113 @@ code {
     height: 100%;
     object-fit: cover;
     transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   }
 
-  .hex-ring {
+  .profile-frame:hover .hex-avatar img {
+    transform: scale(1.15);
+    filter: brightness(1.1) contrast(1.05);
+  }
+
+  .avatar-scanlines {
     position: absolute;
-    inset: -12%;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    border: 1.5px solid rgba(255, 138, 61, 0.5);
-    filter: drop-shadow(0 0 20px rgba(255, 138, 61, 0.35));
-    animation: ringPulse 6s ease-in-out infinite;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(255, 122, 50, 0.12) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 10;
+    opacity: 0.5;
   }
 
-  .hex-ring--outer {
-    inset: -25%;
-    border-color: rgba(255, 186, 121, 0.35);
-    animation-delay: 0.6s;
+  .avatar-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: 
+      linear-gradient(rgba(255, 122, 50, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 122, 50, 0.08) 1px, transparent 1px);
+    background-size: 14px 14px;
+    z-index: 9;
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
 
-  .hex-ring--inner {
-    inset: -6%;
+  .profile-frame:hover .avatar-grid {
+    opacity: 0.7;
   }
+
+  .avatar-hologram-sweep {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 122, 50, 0) 20%,
+      rgba(255, 122, 50, 0.2) 48%,
+      rgba(255, 138, 61, 0.45) 50%,
+      rgba(255, 122, 50, 0.2) 52%,
+      rgba(255, 122, 50, 0) 80%,
+      transparent 100%
+    );
+    z-index: 11;
+    opacity: 0.5;
+    animation: hologramSweep 5s linear infinite;
+  }
+
+  .profile-frame:hover .avatar-hologram-sweep {
+    animation-duration: 2.5s;
+    opacity: 0.8;
+  }
+
+  @keyframes hologramSweep {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .avatar-glitch {
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    opacity: 0;
+    z-index: 8;
+    mix-blend-mode: color-dodge;
+    pointer-events: none;
+  }
+
+  .profile-frame:hover .avatar-glitch {
+    animation: cyberGlitch 0.6s ease-in-out infinite;
+  }
+
+  @keyframes cyberGlitch {
+    0%, 100% {
+      opacity: 0;
+      transform: translate(0, 0) scale(1);
+      filter: none;
+    }
+    10% {
+      opacity: 0.22;
+      transform: translate(-2px, 1px) scale(1.01);
+      filter: hue-rotate(85deg) saturate(1.2);
+    }
+    20% {
+      opacity: 0.1;
+      transform: translate(1px, -1px) scale(0.99);
+    }
+    30% {
+      opacity: 0.25;
+      transform: translate(-1px, 2px) scale(1.02);
+      filter: invert(8%) contrast(1.15) drop-shadow(0 0 5px rgba(9, 240, 255, 0.5));
+    }
+    40% {
+      opacity: 0;
+    }
+  }
+
+
 
   .hex-palette {
     position: absolute;
@@ -599,29 +688,7 @@ code {
 
 
 
-  .skill-html {
-    top: -6%;
-    left: 14%;
-    animation-delay: 0s;
-  }
 
-  .skill-css {
-    top: 8%;
-    right: 12%;
-    animation-delay: -2s;
-  }
-
-  .skill-js {
-    top: 60%;
-    left: 12%;
-    animation-delay: -3s;
-  }
-
-  .skill-figma {
-    bottom: 14%;
-    right: -4%;
-    animation-delay: -6s;
-  }
 
   .wave-canvas {
     position: relative;
@@ -850,20 +917,7 @@ code {
   }
 }
 
-@keyframes skillFloat {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  30% {
-    transform: translate3d(6px, -10px, 0);
-  }
-  60% {
-    transform: translate3d(-4px, -6px, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
+
 
 @keyframes ringPulse {
   0% {
@@ -892,16 +946,267 @@ code {
 
 @keyframes paletteGlow {
   0% {
-    transform: translate(-50%, -50%) scale(0.94);
-    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.94) rotate(0deg);
+    opacity: 0.45;
+    border-color: rgba(105, 249, 255, 0.45);
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.02);
-    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1.02) rotate(180deg);
+    opacity: 0.9;
+    border-color: rgba(255, 122, 50, 0.65);
+    filter: drop-shadow(0 0 15px rgba(255, 122, 50, 0.25));
   }
   100% {
-    transform: translate(-50%, -50%) scale(0.94);
-    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.94) rotate(360deg);
+    opacity: 0.45;
+    border-color: rgba(105, 249, 255, 0.45);
   }
+}
+
+/* --- Added Animations & Interactions --- */
+
+/* Scroll Reveal styles */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: transform, opacity;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delay classes */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* Interactive Mouse Glow Aura */
+.cursor-aura {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  will-change: background;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 122, 50, 0.05),
+    transparent 50%
+  );
+}
+
+/* Custom interactive hover state for Floating tech badges */
+.floating-skill {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-skill:hover {
+  transform: scale(1.2) translateY(-2px) !important;
+  border-color: rgba(255, 161, 73, 0.85) !important;
+  box-shadow: 0 10px 25px rgba(255, 122, 50, 0.45), 0 0 15px rgba(255, 199, 140, 0.35) !important;
+  z-index: 30;
+}
+
+/* Project & Capability Cards subtle tracking glow */
+.interactive-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 138, 61, 0.35);
+  box-shadow: 0 20px 45px rgba(255, 122, 50, 0.12), 0 0 20px rgba(18, 7, 3, 0.55);
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    300px circle at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(255, 138, 61, 0.08),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+.interactive-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Offset for smooth scrolling redirection below sticky navbar */
+section[id] {
+  scroll-margin-top: 86px;
+}
+
+/* Photography Grid Styles */
+.photo-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 138, 61, 0.15);
+  background: rgba(18, 7, 3, 0.4);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 15px 35px rgba(5, 2, 1, 0.3);
+}
+
+.photo-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 122, 50, 0.45);
+  box-shadow: 0 25px 50px rgba(255, 122, 50, 0.15), 0 0 25px rgba(255, 122, 50, 0.1);
+}
+
+.photo-glow-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 8, 3, 0.9) 0%, rgba(20, 8, 3, 0.3) 50%, transparent 100%);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.photo-card:hover .photo-glow-overlay {
+  opacity: 0.95;
+}
+
+.photo-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255, 122, 50, 0.12);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(255, 122, 50, 0.3);
+}
+
+/* Lightbox styles */
+.lightbox-backdrop {
+  backdrop-filter: blur(15px);
+  background-color: rgba(6, 2, 1, 0.9);
+  transition: opacity 0.35s ease;
+}
+
+/* Digital Badges Style */
+.badge-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(35, 14, 5, 0.4) 0%, rgba(10, 4, 1, 0.75) 100%);
+  border: 1.5px solid rgba(255, 138, 61, 0.15);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  overflow: hidden;
+}
+
+.badge-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: rgba(9, 240, 255, 0.7);
+  box-shadow: 0 20px 45px rgba(0, 191, 255, 0.28), inset 0 0 22px rgba(0, 191, 255, 0.2);
+}
+
+.badge-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: skewX(-25deg);
+  transition: 0.75s;
+}
+
+.badge-card:hover .badge-shine {
+  left: 125%;
+}
+
+.badge-glow-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, rgba(9, 240, 255, 0.6), rgba(0, 100, 255, 0.6)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.badge-card:hover .badge-glow-ring {
+  opacity: 1;
+}
+
+/* Honeycomb Grid canvas overlay background */
+.honeycomb-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Honeycomb Tech Stack Cards */
+.hex-tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.hex-tech-card {
+  position: relative;
+  width: 124px;
+  height: 142px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hex-tech-card:hover {
+  transform: scale(1.08) translateY(-4px);
+  background: linear-gradient(135deg, var(--brand-color-top, #ff7a32), var(--brand-color-bottom, #ffa149));
+  filter: drop-shadow(0 8px 20px var(--brand-glow, rgba(255, 122, 50, 0.25)));
+}
+
+.hex-tech-inner {
+  position: absolute;
+  inset: 2px;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: #140702;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.4s ease;
+  z-index: 2;
+}
+
+.hex-tech-card:hover .hex-tech-inner {
+  background: linear-gradient(135deg, rgba(20, 7, 2, 0.95), rgba(35, 14, 5, 0.95));
 }
 
