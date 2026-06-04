@@ -152,10 +152,10 @@ function About() {
           </div>
 
           <div className="relative max-w-5xl mx-auto px-4 sm:px-12">
-            
+
             {/* Sliding viewport */}
             <div className="overflow-hidden w-full rounded-[28px]">
-              <div 
+              <div
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               >
@@ -168,15 +168,15 @@ function About() {
                       >
                         <div className="badge-shine" />
                         <div className="badge-glow-ring" />
-                        
+
                         <div className="space-y-4">
                           <div className="flex items-center justify-between">
                             <span className="flex h-20 w-20 items-center justify-center rounded-[24px] border border-white/10 bg-white/5 text-white transition duration-500 group-hover:scale-110 shadow-[0_8px_20px_rgba(0,0,0,0.4)] group-hover:border-[#09f0ff]/70 overflow-hidden">
                               {badge.image ? (
                                 <>
-                                  <img 
-                                    src={badge.image} 
-                                    alt={badge.name} 
+                                  <img
+                                    src={badge.image}
+                                    alt={badge.name}
                                     className="h-full w-full object-contain p-2"
                                     onError={(e) => {
                                       e.target.style.display = 'none';
@@ -254,9 +254,8 @@ function About() {
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                      currentSlide === idx ? "w-6 bg-[#09f0ff] shadow-[0_0_8px_rgba(9,240,255,0.6)]" : "w-2.5 bg-white/20 hover:bg-white/40"
-                    }`}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${currentSlide === idx ? "w-6 bg-[#09f0ff] shadow-[0_0_8px_rgba(9,240,255,0.6)]" : "w-2.5 bg-white/20 hover:bg-white/40"
+                      }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
