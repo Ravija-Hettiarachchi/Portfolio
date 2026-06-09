@@ -5,8 +5,9 @@ function Navbar() {
   const [logoFailed, setLogoFailed] = useState(false);
   const navItems = [
     { href: "#home", label: "Home" },
-    { href: "#projects", label: "Projects" },
     { href: "#about", label: "About" },
+    { href: "#projects", label: "Projects" },
+    { href: "#journey", label: "Journey" },
     { href: "#photography", label: "Photography" },
     { href: "#contact", label: "Contact" },
   ];

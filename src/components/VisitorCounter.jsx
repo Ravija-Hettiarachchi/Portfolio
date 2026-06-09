@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const COUNT_API_ENDPOINT = "https://api.countapi.xyz/hit/ravija-portfolio-2024/visitor-count";
+const COUNT_API_ENDPOINT = "https://api.counterapi.dev/v1/ravija-portfolio-2024/visitors/up";
 
 function VisitorCounter() {
   const [count, setCount] = useState(null);
@@ -16,8 +16,8 @@ function VisitorCounter() {
           throw new Error("Failed to fetch visitor count");
         }
         const data = await response.json();
-        if (!ignore && typeof data.value === "number") {
-          setCount(data.value);
+        if (!ignore && typeof data.count === "number") {
+          setCount(data.count);
         }
       } catch (err) {
         if (!ignore) {
