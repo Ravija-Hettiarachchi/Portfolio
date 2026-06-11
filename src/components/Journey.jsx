@@ -60,7 +60,7 @@ function Journey() {
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-[#ffa149]/10 text-[#ffa149] border border-[#ffa149]/20 shadow-[0_0_15px_rgba(255,161,73,0.1)]">
                 🎓
               </span>
-              <h3 className="text-xl font-bold tracking-wider text-white">Education & Credentials</h3>
+              <h3 className="text-xl font-bold tracking-wider text-white">Academic & Professional Credentials</h3>
             </div>
             
             {/* Timeline Track (Line) */}

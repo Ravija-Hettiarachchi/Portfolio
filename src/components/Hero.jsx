@@ -214,11 +214,11 @@ function Hero() {
           <div className="reveal-on-scroll delay-100 inline-flex items-center gap-2.5 self-center rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-[0.7rem] uppercase tracking-[0.45em] text-white/70 sm:px-7 sm:text-xs lg:self-start">
             Hey, I am <span className="font-semibold text-[#ff7a32] min-w-[70px] inline-block">{scrambledName}</span>
           </div>
-          <h1 className="reveal-on-scroll delay-200 text-4xl font-extrabold leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl tracking-tight">
+          <h1 data-scroll data-scroll-speed="0.8" className="animate-fade-in text-4xl font-extrabold leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl tracking-tight">
             <span className="inline-block min-w-[280px]">{scrambledTitleWord1}</span> &{" "}
             <span className="block text-[#ff8a3d] min-w-[120px]">{scrambledTitleWord2}</span>
           </h1>
-          <p className="reveal-on-scroll delay-300 mx-auto max-w-2xl text-lg text-white/80 sm:text-xl lg:mx-0">
+          <p data-scroll data-scroll-speed="0.4" className="animate-fade-in-delay mx-auto max-w-2xl text-lg text-white/80 sm:text-xl lg:mx-0">
             I craft resilient digital experiences where automation, security, and design meet. Let’s build interfaces that feel lightning fast while keeping every interaction protected.
           </p>
 
@@ -244,12 +244,31 @@ function Hero() {
           </div>
         </div>
 
-        <div className="reveal-on-scroll delay-300 relative flex w-full flex-1 justify-center overflow-hidden px-2 sm:px-0 sm:overflow-visible lg:items-start lg:justify-end">
-          <div className="relative flex h-[300px] w-[300px] max-w-full items-center justify-center -translate-y-10 sm:h-[380px] sm:w-[380px] sm:-translate-y-20 lg:h-[440px] lg:w-[440px] lg:-translate-y-28 lg:translate-x-16">
-            <div className="profile-frame group/avatar">
-              <div className="profile-frame__core relative z-1">
-                <div className="hex-avatar">
-                  <img src="/profil-pic.jpg" alt="Ravija hero avatar" />
+        <div className="reveal-on-scroll delay-300 relative flex w-full flex-1 justify-center px-2 sm:px-0 lg:items-start lg:justify-end">
+          <div className="relative -translate-y-24 translate-x-4 sm:-translate-y-40 sm:translate-x-10 lg:-translate-y-56 lg:translate-x-28">
+            <div data-scroll data-scroll-speed="-0.65" className="relative flex h-[330px] w-[330px] max-w-full items-center justify-center sm:h-[440px] sm:w-[440px] lg:h-[500px] lg:w-[500px]">
+              <div className="profile-frame group/avatar">
+                <div className="profile-frame__core relative z-1">
+                  <div className="hex-avatar">
+                    <img src="/profil-pic.jpg" alt="Ravija hero avatar" />
+                  </div>
+                  {/* Glowing Hexagonal Border Overlay */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <polygon 
+                      points="25,0.8 75,0.8 99.2,50 75,99.2 25,99.2 0.8,50" 
+                      fill="none" 
+                      stroke="url(#hex-glow-grad)" 
+                      strokeWidth="1.6"
+                      className="avatar-glow-poly"
+                    />
+                    <defs>
+                      <linearGradient id="hex-glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#ff7a32" stopOpacity="1" />
+                        <stop offset="50%" stopColor="#ffa149" stopOpacity="1" />
+                        <stop offset="100%" stopColor="#ff7a32" stopOpacity="1" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                 </div>
               </div>
             </div>

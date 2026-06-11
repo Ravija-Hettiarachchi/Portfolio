@@ -7,7 +7,6 @@ function Navbar() {
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#projects", label: "Projects" },
-    { href: "#journey", label: "Journey" },
     { href: "#photography", label: "Photography" },
     { href: "#contact", label: "Contact" },
   ];
