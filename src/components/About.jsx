@@ -171,7 +171,7 @@ function About() {
       <section
         id="about"
         ref={revealRef}
-        className="relative overflow-x-clip bg-gradient-to-b from-[#080301] via-[#0d0401] to-[#120601] px-4 py-16 text-white sm:px-6 sm:py-20"
+        className="relative overflow-x-clip px-4 py-16 text-white sm:px-6 sm:py-20"
       >
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-60" />
@@ -222,7 +222,7 @@ function About() {
       {/* Digital Badges — full-width sticky scroll (must sit outside overflow-hidden parents) */}
       <section
         ref={badgeScrollRef}
-        className="relative w-full bg-[#0d0401] border-t border-white/5"
+        className="relative w-full border-t border-white/5"
         style={{ height: BADGE_SCROLL_HEIGHT }}
         aria-label="Digital Badges"
       >

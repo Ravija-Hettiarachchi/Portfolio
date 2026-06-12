@@ -71,7 +71,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" ref={revealRef} className="relative px-4 py-16 sm:px-6 sm:py-24 bg-gradient-to-b from-[#080301] to-[#0d0401] overflow-hidden border-t border-white/5">
+    <section id="contact" ref={revealRef} className="relative px-4 py-16 sm:px-6 sm:py-24 overflow-hidden border-t border-white/5">
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-8 top-1/4 h-80 w-80 rounded-full bg-gradient-to-br from-[#ff8a3d]/15 via-transparent to-transparent blur-3xl opacity-70" />

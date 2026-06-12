@@ -8,7 +8,11 @@ import Projects from "../components/Projects";
 import Photography from "../components/Photography";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import Preloader from "../components/Preloader";
+import dynamic from "next/dynamic";
+
+const ParticleBackground = dynamic(() => import("../components/ParticleBackground"), {
+  ssr: false
+});
 
 export default function Home() {
   useEffect(() => {
@@ -51,7 +55,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-x-clip">
-      <Preloader />
+      <ParticleBackground />
       <div className="cursor-aura" />
       <div className="theme-overlay" />
 

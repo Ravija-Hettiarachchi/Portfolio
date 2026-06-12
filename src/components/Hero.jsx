@@ -194,7 +194,7 @@ function Hero() {
       ref={revealRef}
       onMouseMove={handleHeroMouseMove}
       onMouseLeave={handleHeroMouseLeave}
-      className="relative min-h-[98vh] lg:min-h-[100vh] flex items-center overflow-hidden bg-gradient-to-br from-[#120601] via-[#190b04] to-[#0a0401] px-4 py-16 text-white sm:px-6 sm:py-24"
+      className="relative min-h-[98vh] lg:min-h-[100vh] flex items-center overflow-hidden px-4 py-16 text-white sm:px-6 sm:py-24"
     >
       {/* Interactive Honeycomb Grid Background Canvas */}
       <canvas

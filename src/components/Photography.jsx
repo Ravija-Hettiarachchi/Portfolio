@@ -2,41 +2,45 @@
 
 import React, { useState } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
-
 const photoItems = [
   {
-    id: "photo_city",
+    id: "photo_1",
     title: "Neons of Colombo",
     category: "Street & Urban",
-    src: "/photo_city.png",
+    src: "/img1.jpg",
     meta: "ISO 800 | 50mm | f/1.8 | 1/160s",
-    desc: "A dramatic capture of night neons reflecting on rain-washed streets, exploring urban cyberpunk aesthetics."
+    desc: "A dramatic capture of night neons reflecting on rain-washed streets, exploring urban cyberpunk aesthetics.",
+    scrollSpeed: "0.1"
   },
   {
-    id: "photo_mountains",
+    id: "photo_2",
     title: "Misty Range Sunset",
     category: "Landscape & Travel",
-    src: "/photo_mountains.png",
+    src: "/img2.jpg",
     meta: "ISO 100 | 24mm | f/8.0 | 1/250s",
-    desc: "Catching the warm amber layers of mist wrapping around highland ranges during golden hour."
+    desc: "Catching the warm amber layers of mist wrapping around highland ranges during golden hour.",
+    scrollSpeed: "0.4"
   },
   {
-    id: "photo_arch",
+    id: "photo_3",
     title: "Minimalist Concrete",
     category: "Architecture",
-    src: "/photo_arch.png",
+    src: "/img3.jpg",
     meta: "ISO 200 | 35mm | f/4.0 | 1/320s",
-    desc: "A monochrome spatial perspective study focusing on harsh shadows and clean modern concrete geometries."
+    desc: "A monochrome spatial perspective study focusing on harsh shadows and clean modern concrete geometries.",
+    scrollSpeed: "-0.1"
   },
   {
-    id: "photo_macro",
+    id: "photo_4",
     title: "Cyber Dew",
     category: "Abstract Macro",
-    src: "/photo_macro.png",
+    src: "/img4.jpg",
     meta: "ISO 400 | 90mm | f/2.8 | 1/125s",
-    desc: "Water droplets caught in extreme focus, refracting ambient neon lights like electronic circuitry."
+    desc: "Water droplets caught in extreme focus, refracting ambient neon lights like electronic circuitry.",
+    scrollSpeed: "0.2"
   }
 ];
+
 
 function Photography() {
   const revealRef = useScrollReveal();
@@ -50,11 +54,17 @@ function Photography() {
     e.currentTarget.style.setProperty("--card-mouse-y", `${y}px`);
   };
 
+  const handleImageLoad = () => {
+    if (window.__locomotiveScroll) {
+      window.__locomotiveScroll.resize();
+    }
+  };
+
   return (
     <section
       id="photography"
       ref={revealRef}
-      className="relative overflow-hidden bg-gradient-to-b from-[#080301] via-[#0d0401] to-[#120601] px-4 py-12 text-white sm:px-6 sm:py-16"
+      className="relative overflow-x-clip px-4 py-12 text-white sm:px-6 sm:py-16"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50" />
@@ -71,6 +81,39 @@ function Photography() {
           </p>
         </div>
 
+        <div
+          data-scroll
+          data-scroll-speed="0.3"
+          className="max-w-5xl mx-auto w-full group photo-card cursor-zoom-in mb-8"
+          onClick={() => setActivePhoto({
+            id: "photo_logo",
+            title: "Ravija Hettiarachchi",
+            category: "",
+            src: "/mylogo.png",
+            meta: "",
+            desc: ""
+          })}
+        >
+          {/* Card Scanlines & Hologram Sweep */}
+          <div className="avatar-scanlines absolute inset-0 pointer-events-none z-10 opacity-30 group-hover:opacity-50" />
+          <div className="avatar-grid absolute inset-0 pointer-events-none z-[9] opacity-0 group-hover:opacity-60" />
+          <div className="photo-glow-overlay" />
+
+          {/* Photo Box */}
+          <div className="relative w-full overflow-hidden bg-black/10 py-12 px-6 flex items-center justify-center min-h-[320px]">
+            <img
+              src="/mylogo.png"
+              alt="Ravija Hettiarachchi Logo"
+              loading="lazy"
+              onLoad={handleImageLoad}
+              className="max-h-[220px] object-contain transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+
+
+
+        </div>
+
         {/* 4-Card Photography Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto w-full">
           {photoItems.map((photo, index) => (
@@ -78,7 +121,9 @@ function Photography() {
               key={photo.id}
               onClick={() => setActivePhoto(photo)}
               onMouseMove={handleCardMouseMove}
-              className={`reveal-on-scroll delay-${(index + 1) * 100} group photo-card cursor-zoom-in`}
+              data-scroll
+              data-scroll-speed={photo.scrollSpeed}
+              className="group photo-card cursor-zoom-in"
             >
               {/* Card Scanlines & Hologram Sweep */}
               <div className="avatar-scanlines absolute inset-0 pointer-events-none z-10 opacity-30 group-hover:opacity-50" />
@@ -86,12 +131,13 @@ function Photography() {
               <div className="photo-glow-overlay" />
 
               {/* Photo Box */}
-              <div className="relative h-[250px] sm:h-[280px] w-full overflow-hidden">
+              <div className="relative w-full overflow-hidden">
                 <img
                   src={photo.src}
                   alt={photo.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  onLoad={handleImageLoad}
+                  className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
 
@@ -135,24 +181,26 @@ function Photography() {
           </button>
 
           <div
-            className="relative flex max-h-[85vh] max-w-[90vw] flex-col gap-4 rounded-3xl border border-white/10 bg-[#120703] p-4 shadow-[0_30px_90px_rgba(255,122,50,0.25)]"
+            className="relative flex max-h-[90vh] max-w-[90vw] flex-col gap-4 rounded-3xl border border-white/10 bg-[#120703] p-4 shadow-[0_30px_90px_rgba(255,122,50,0.25)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="overflow-hidden rounded-2xl bg-black flex items-center justify-center max-h-[65vh]">
+            <div className="rounded-2xl bg-black/20 flex items-center justify-center overflow-hidden">
               <img
                 src={activePhoto.src}
                 alt={activePhoto.title}
-                className="max-h-full max-w-full object-contain"
+                className="max-h-[60vh] max-w-full object-contain block"
               />
             </div>
 
             <div className="space-y-1.5 px-2 py-1">
-              <div className="flex items-center justify-between gap-4">
-                <span className="photo-tag">{activePhoto.category}</span>
-                <span className="font-mono text-xs text-[#ff8a3d]">{activePhoto.meta}</span>
-              </div>
+              {(activePhoto.category || activePhoto.meta) && (
+                <div className="flex items-center justify-between gap-4">
+                  {activePhoto.category && <span className="photo-tag">{activePhoto.category}</span>}
+                  {activePhoto.meta && <span className="font-mono text-xs text-[#ff8a3d]">{activePhoto.meta}</span>}
+                </div>
+              )}
               <h3 className="text-xl font-bold text-white">{activePhoto.title}</h3>
-              <p className="text-sm text-white/70">{activePhoto.desc}</p>
+              {activePhoto.desc && <p className="text-sm text-white/70">{activePhoto.desc}</p>}
             </div>
           </div>
         </div>

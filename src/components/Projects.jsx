@@ -320,7 +320,7 @@ function Projects() {
                     style={{ transform: `translate3d(${(capabilitiesScroll - 0.5) * -720}px, 0, 0)` }}
                   >
                     {row1Items.map(({ name, iconUrl, accent }, index) => {
-                      const waveOffset = Math.sin(index * 0.75) * 24;
+                      const waveOffset = (Math.sin(index * 0.75) * 24).toFixed(2);
                       return (
                         <div
                           key={`row1-${name}-${index}`}
@@ -354,7 +354,7 @@ function Projects() {
                   >
                     {row2Items.map(({ name, iconUrl, accent }, index) => {
                       // Out-of-phase by adding 4.2 to index, so it arches in the opposite direction
-                      const waveOffset = Math.sin((index + 4.2) * 0.75) * 24;
+                      const waveOffset = (Math.sin((index + 4.2) * 0.75) * 24).toFixed(2);
                       return (
                         <div
                           key={`row2-${name}-${index}`}
@@ -391,7 +391,7 @@ function Projects() {
         ref={containerRef}
         className="relative h-[250vh] w-full"
       >
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-[#0d0401] border-t border-white/5">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center border-t border-white/5">
           {/* Background grid/glow effects */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/3 h-96 w-96 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,122,50,0.08),transparent_70%)] blur-3xl opacity-50" />
