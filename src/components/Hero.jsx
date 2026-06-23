@@ -3,6 +3,7 @@ import VisitorCounter from "./VisitorCounter";
 import useScrollReveal from "../hooks/useScrollReveal";
 import useTextScramble from "../hooks/useTextScramble";
 
+
 function Hero() {
   const revealRef = useScrollReveal();
   const honeycombCanvasRef = useRef(null);
@@ -194,7 +195,7 @@ function Hero() {
       ref={revealRef}
       onMouseMove={handleHeroMouseMove}
       onMouseLeave={handleHeroMouseLeave}
-      className="relative min-h-[98vh] lg:min-h-[100vh] flex items-center overflow-hidden px-4 py-16 text-white sm:px-6 sm:py-24"
+      className="relative min-h-[98vh] lg:min-h-[100vh] flex items-center overflow-hidden px-4 pt-28 pb-16 text-white sm:px-6 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28"
     >
       {/* Interactive Honeycomb Grid Background Canvas */}
       <canvas
@@ -215,10 +216,10 @@ function Hero() {
             Hey, I am <span className="font-semibold text-[#ff7a32] min-w-[70px] inline-block">{scrambledName}</span>
           </div>
           <h1 data-scroll data-scroll-speed="0.8" className="animate-fade-in text-4xl font-extrabold leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl tracking-tight">
-            <span className="inline-block min-w-[280px]">{scrambledTitleWord1}</span> &{" "}
-            <span className="block text-[#ff8a3d] min-w-[120px]">{scrambledTitleWord2}</span>
+            <span className="inline-block min-w-[280px] bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[#ff7a32] drop-shadow-[0_4px_12px_rgba(255,122,50,0.1)] pb-2">{scrambledTitleWord1}</span> &{" "}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#ff8a3d] to-[#ffa149] min-w-[120px] drop-shadow-[0_4px_16px_rgba(255,122,50,0.25)] pb-2">{scrambledTitleWord2}</span>
           </h1>
-          <p data-scroll data-scroll-speed="0.4" className="animate-fade-in-delay mx-auto max-w-2xl text-lg text-white/80 sm:text-xl lg:mx-0">
+          <p data-scroll data-scroll-speed="0.4" className="animate-fade-in-delay mx-auto max-w-2xl text-lg text-white/80 sm:text-xl lg:mx-0 mt-3 sm:mt-4">
             I craft resilient digital experiences where automation, security, and design meet. Let’s build interfaces that feel lightning fast while keeping every interaction protected.
           </p>
 
@@ -226,14 +227,17 @@ function Hero() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#ff7a32] to-[#ffa149] px-10 py-4 text-base font-semibold text-[#1c0902] shadow-[0_18px_40px_rgba(255,122,50,0.45)] transition duration-300 hover:scale-[1.04] hover:shadow-[0_22px_45px_rgba(255,122,50,0.55)]"
+              className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-[#ff7a32] focus:ring-offset-2 focus:ring-offset-slate-900 transition-transform duration-300 hover:scale-[1.03] active:scale-95 inline-block"
             >
-              Hire me
+              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ff7a32] to-[#ffa149] opacity-75 group-hover:opacity-100 transition duration-300 blur-sm group-hover:blur-md" />
+              <span className="relative block rounded-full bg-black/85 px-10 py-3.5 text-base font-semibold text-white/90 transition-all duration-300 group-hover:bg-transparent group-hover:text-black">
+                Hire me
+              </span>
             </a>
             <a
               href="#projects"
               onClick={(e) => handleNavClick(e, "#projects")}
-              className="inline-flex items-center justify-center rounded-full border border-white/15 px-10 py-4 text-base font-semibold text-white/80 transition duration-300 hover:border-white/35 hover:bg-white/5 hover:text-white"
+              className="inline-flex items-center justify-center rounded-full border border-white/15 px-10 py-4 text-base font-semibold text-white/80 transition-all duration-300 hover:border-[#ff8a3d]/45 hover:bg-[#ff7a32]/10 hover:text-white hover:shadow-[0_0_20px_rgba(255,122,50,0.2)] hover:scale-[1.03]"
             >
               View projects
             </a>
@@ -245,7 +249,7 @@ function Hero() {
         </div>
 
         <div className="reveal-on-scroll delay-300 relative flex w-full flex-1 justify-center px-2 sm:px-0 lg:items-start lg:justify-end">
-          <div className="relative -translate-y-24 translate-x-4 sm:-translate-y-40 sm:translate-x-10 lg:-translate-y-56 lg:translate-x-28">
+          <div className="relative translate-y-0 translate-x-0 sm:translate-y-0 sm:translate-x-0 lg:-translate-y-6 lg:translate-x-6">
             <div data-scroll data-scroll-speed="-0.65" className="relative flex h-[330px] w-[330px] max-w-full items-center justify-center sm:h-[440px] sm:w-[440px] lg:h-[500px] lg:w-[500px]">
               <div className="profile-frame group/avatar">
                 <div className="profile-frame__core relative z-1">

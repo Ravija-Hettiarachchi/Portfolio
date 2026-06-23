@@ -1,30 +1,72 @@
 import React from 'react';
+import { FaGithub, FaLinkedinIn, FaFacebookF } from 'react-icons/fa';
+import { FiMail } from 'react-icons/fi';
 
 function Footer() {
+  const socialLinks = [
+    {
+      href: 'https://github.com/ravija-hettiarachchi',
+      icon: FaGithub,
+      label: 'GitHub',
+    },
+    {
+      href: 'https://www.linkedin.com/in/ravija-hettiarachchi',
+      icon: FaLinkedinIn,
+      label: 'LinkedIn',
+    },
+    {
+      href: '#', // Facebook link or placeholder
+      icon: FaFacebookF,
+      label: 'Facebook',
+    },
+    {
+      href: 'mailto:hettiarachchi.ravija@gmail.com',
+      icon: FiMail,
+      label: 'Email',
+    },
+  ];
+
   return (
-    <footer className="relative px-4 pb-12 pt-16 sm:px-6">
-      <div className="mx-auto max-w-6xl space-y-8 text-center">
-        <div className="soft-divider" />
-        <p className="text-soft text-sm">
-          <span className="group relative inline-flex flex-col items-center px-2 py-1">
-            <span className="absolute inset-x-2 bottom-0 h-px bg-gradient-to-r from-transparent via-[#60a5fa]/60 to-transparent blur-sm opacity-0 transition duration-300 group-hover:opacity-100" />
-            <span className="relative underline decoration-transparent group-hover:decoration-[#60a5fa]/60 underline-offset-4 transition">
-              © 2026 Ravija Hettiarachchi
-            </span>
-          </span>
+    <footer className="relative px-4 pb-16 pt-20 sm:px-6 bg-gradient-to-b from-transparent to-black/30">
+      {/* Premium glowing top border */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#ff7a32]/25 to-transparent" />
+      
+      <div className="mx-auto max-w-6xl flex flex-col items-center text-center space-y-6">
+
+        {/* Name */}
+        <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ff7a32] to-[#ffa149] tracking-tight">
+          Ravija Hettiarachchi
+        </h2>
+
+        {/* Description / Subtitle */}
+        <p className="text-sm text-white/50 max-w-md font-normal leading-relaxed">
+          Cybersecurity enthusiast. Designing interfaces with precision.
         </p>
-        <div className="flex flex-wrap justify-center gap-4 text-[0.6rem] uppercase tracking-[0.4em] text-white/40 sm:gap-6 sm:text-xs">
-          <a href="#projects" className="transition-colors hover:text-white">
-            Projects
-          </a>
-          <a href="#about" className="transition-colors hover:text-white">
-            About
-          </a>
-          <a href="#contact" className="transition-colors hover:text-white">
-            Contact
-          </a>
-          
+
+        {/* Social Icons Row */}
+        <div className="flex items-center justify-center gap-8 pt-2">
+          {socialLinks.map((social, index) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.label}
+                className="text-white/40 hover:text-[#ff7a32] transition duration-300 transform hover:scale-110 filter hover:drop-shadow-[0_0_6px_rgba(255,122,50,0.55)]"
+              >
+                <Icon className="h-5.5 w-5.5" />
+              </a>
+            );
+          })}
         </div>
+
+        {/* Copyright */}
+        <p className="text-[11px] font-mono tracking-wider text-white/30 pt-4">
+          © 2026 Ravija Hettiarachchi. All rights reserved.
+        </p>
+
       </div>
     </footer>
   );

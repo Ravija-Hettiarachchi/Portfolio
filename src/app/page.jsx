@@ -10,7 +10,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import dynamic from "next/dynamic";
 
-const ParticleBackground = dynamic(() => import("../components/ParticleBackground"), {
+const Antigravity = dynamic(() => import("../components/Antigravity"), {
   ssr: false
 });
 
@@ -55,7 +55,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-x-clip">
-      <ParticleBackground />
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.36]">
+        <Antigravity
+          count={1000}
+          magnetRadius={26}
+          ringRadius={18}
+          waveSpeed={1.6}
+          waveAmplitude={0.7}
+          particleSize={0.85}
+          lerpSpeed={0.04}
+          color="#ff7a32"
+          autoAnimate={true}
+          particleVariance={0.8}
+          fieldStrength={10}
+          capsuleArgs={[0.038, 0.18, 4, 8]}
+        />
+      </div>
       <div className="cursor-aura" />
       <div className="theme-overlay" />
 

@@ -1,7 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import useScrollReveal from "../hooks/useScrollReveal";
+import BorderGlow from "./BorderGlow";
 
 const projects = [
+  {
+    title: "Vehicle Service Platform",
+    tagline: "IN PROGRESS • SECURE RECORD LOGGING",
+    description: "A centralized digital records platform under active development for uploading, validating, and sharing vehicle service histories. Standardizes logs and file uploads to prevent maintenance history fraud.",
+    icon: "🚗",
+    link: "https://github.com/ravija-hettiarachchi",
+    tags: ["React", "Node.js", "Express", "Multer", "PostgreSQL"],
+    accentGlow: "group-hover:border-[#f59e0b]/25",
+    iconBg: "bg-[#f59e0b]/10 text-[#f59e0b] border-[#f59e0b]/25 shadow-[0_0_15px_rgba(245,158,11,0.15)]",
+    cardGlow: "rgba(245, 158, 11, 0.15)",
+    glowColor: "38 95 50",
+    colors: ["#f59e0b", "#fbbf24", "#d97706"]
+  },
   {
     title: "Lumos",
     tagline: "HEALTHCARE COMPANION APP",
@@ -11,7 +25,9 @@ const projects = [
     tags: ["React Native", "Tailwind CSS", "Firebase", "Figma"],
     accentGlow: "group-hover:border-[#ff7a32]/25",
     iconBg: "bg-[#ff7a32]/10 text-[#ff7a32] border-[#ff7a32]/25 shadow-[0_0_15px_rgba(255,122,50,0.15)]",
-    cardGlow: "rgba(255, 122, 50, 0.15)"
+    cardGlow: "rgba(255, 122, 50, 0.15)",
+    glowColor: "20 100 60",
+    colors: ["#ff7a32", "#ffa149", "#ea580c"]
   },
   {
     title: "SGo Travel Support",
@@ -22,8 +38,11 @@ const projects = [
     tags: ["Node.js", "MySQL", "JavaScript", "Linux", "Java"],
     accentGlow: "group-hover:border-[#ffa149]/25",
     iconBg: "bg-[#ffa149]/10 text-[#ffa149] border-[#ffa149]/25 shadow-[0_0_15px_rgba(255,161,73,0.15)]",
-    cardGlow: "rgba(255, 161, 73, 0.15)"
-  }
+    cardGlow: "rgba(255, 161, 73, 0.15)",
+    glowColor: "30 100 63",
+    colors: ["#ffa149", "#ffb07a", "#d97706"]
+  },
+
 ];
 
 const toolkits = [
@@ -226,7 +245,7 @@ function Projects() {
       const rect = el.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const totalScrollable = Math.max(1, rect.height - viewportHeight);
-      
+
       let progress = -rect.top / totalScrollable;
       progress = Math.max(0, Math.min(1, progress));
       setCapabilitiesScroll(progress);
@@ -249,10 +268,10 @@ function Projects() {
 
       const rect = el.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
-      
+
       const totalScrollable = rect.height - viewportHeight;
       const currentScroll = -rect.top;
-      
+
       let progress = currentScroll / totalScrollable;
       progress = Math.max(0, Math.min(1, progress));
       setScrollProgress(progress);
@@ -289,10 +308,10 @@ function Projects() {
 
   return (
     <div ref={revealRef} className="bg-gradient-to-b from-[#0d0401] via-[#120601] to-[#080301] text-white">
-      
+
       {/* 1. Capabilities Stacks Area (Sticky Scroll Section) */}
-      <section 
-        ref={capabilitiesSectionRef} 
+      <section
+        ref={capabilitiesSectionRef}
         className="relative w-full h-[180vh]"
       >
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
@@ -315,7 +334,7 @@ function Projects() {
               <div className="mt-8 sm:mt-12 space-y-4 sm:space-y-8 overflow-hidden py-4">
                 {/* Row 1: Horizontal scrolling left, driven by scroll progress */}
                 <div className="marquee-container">
-                  <div 
+                  <div
                     className="marquee-track"
                     style={{ transform: `translate3d(${(capabilitiesScroll - 0.5) * -720}px, 0, 0)` }}
                   >
@@ -348,7 +367,7 @@ function Projects() {
 
                 {/* Row 2: Horizontal scrolling right, driven by scroll progress */}
                 <div className="marquee-container">
-                  <div 
+                  <div
                     className="marquee-track"
                     style={{ transform: `translate3d(${(capabilitiesScroll - 0.5) * 720}px, 0, 0)` }}
                   >
@@ -386,7 +405,7 @@ function Projects() {
       </section>
 
       {/* 2. Showcase Horizontal Scroll Area (Sticky h-[250vh]) */}
-      <section 
+      <section
         id="projects"
         ref={containerRef}
         className="relative h-[250vh] w-full"
@@ -399,7 +418,7 @@ function Projects() {
           </div>
 
           {/* Horizontal Scroll Track */}
-          <div 
+          <div
             ref={trackRef}
             className="flex items-center gap-12 px-[10vw] w-max transition-transform duration-75 ease-out relative z-10"
             style={{
@@ -417,7 +436,7 @@ function Projects() {
                   Highlighting security automation and interface layers I develop from concept to implementation. Scroll down to explore the gallery.
                 </p>
               </div>
-              
+
               <div className="flex items-center gap-3 font-mono text-xs text-white/45">
                 <span className="animate-pulse h-2 w-2 rounded-full bg-[#ff7a32]" />
                 <span>SCROLL DOWN TO NAVIGATE SIDEWAYS</span>
@@ -427,71 +446,76 @@ function Projects() {
 
             {/* Slide 2 & 3: Project Cards */}
             {projects.map((project, index) => (
-              <div 
+              <div
                 key={project.title}
                 className="w-[340px] sm:w-[480px] shrink-0"
               >
-                <article
-                  onMouseMove={handleCardMouseMove}
-                  className={`group relative flex h-[360px] flex-col justify-between rounded-[32px] border border-white/5 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-8 text-left shadow-[0_30px_70px_rgba(0,0,0,0.6)] interactive-card transition-all duration-300 hover:shadow-[0_45px_85px_rgba(0,0,0,0.85)] hover:border-[#ff8a3d]/25`}
+                <BorderGlow
+                  edgeSensitivity={30}
+                  glowColor={project.glowColor}
+                  backgroundColor="#120602"
+                  borderRadius={32}
+                  glowRadius={50}
+                  glowIntensity={1.2}
+                  coneSpread={24}
+                  animated={false}
+                  colors={project.colors}
+                  className="w-full h-[360px] group cursor-pointer transition-all duration-300"
+                  fillOpacity={0.06}
                 >
-                  {/* Hover glow */}
-                  <div 
-                    className="absolute bottom-[-30px] right-[-30px] w-36 h-36 rounded-full opacity-0 blur-[40px] group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{ background: `radial-gradient(circle, ${project.cardGlow} 0%, transparent 70%)` }}
-                  />
-
-                  {/* Top content */}
-                  <div className="space-y-5">
-                    {/* Header */}
-                    <div className="flex items-center gap-4">
-                      <span className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-xl transition-all duration-500 group-hover:scale-105 group-hover:-rotate-[6deg] group-hover:translate-y-[-2px] ${project.iconBg}`}>
-                        {project.icon}
-                      </span>
-                      <div className="space-y-0.5">
-                        <span className="block font-mono text-[8.5px] tracking-widest text-[#ff8a3d] uppercase font-bold">
-                          {project.tagline}
+                  <div className="flex h-full flex-col justify-between p-8 text-left">
+                    {/* Top content */}
+                    <div className="space-y-5">
+                      {/* Header */}
+                      <div className="flex items-center gap-4">
+                        <span className={`flex h-12 w-12 items-center justify-center rounded-2xl border text-xl transition-all duration-500 group-hover:scale-105 group-hover:-rotate-[6deg] group-hover:translate-y-[-2px] ${project.iconBg}`}>
+                          {project.icon}
                         </span>
-                        <h4 className="text-xl font-extrabold text-white tracking-tight">
-                          {project.title}
-                        </h4>
+                        <div className="space-y-0.5">
+                          <span className="block font-mono text-[8.5px] tracking-widest text-[#ff8a3d] uppercase font-bold">
+                            {project.tagline}
+                          </span>
+                          <h4 className="text-xl font-extrabold text-white tracking-tight">
+                            {project.title}
+                          </h4>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom contents */}
+                    <div className="space-y-5">
+                      {/* Tech Stacks Tag Grid */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="font-mono text-[9px] text-white/60 bg-white/5 border border-white/10 px-3 py-1 rounded-full transition duration-300 group-hover:text-white/95 group-hover:border-white/20 group-hover:bg-[#ff7a32]/5"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Explore button */}
+                      <div className="flex items-center justify-start border-t border-white/5 pt-4">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.25em] text-[#ffb07a] transition-all duration-300 hover:border-[#ff8a3d]/45 hover:bg-[#ff7a32]/10 hover:text-white hover:shadow-[0_0_15px_rgba(255,122,50,0.25)] hover:scale-[1.02]"
+                        >
+                          Explore Code
+                          <span className="text-xs transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                        </a>
                       </div>
                     </div>
-
-                    {/* Description */}
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                      {project.description}
-                    </p>
                   </div>
-
-                  {/* Bottom contents */}
-                  <div className="space-y-5">
-                    {/* Tech Stacks Tag Grid */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span 
-                          key={tag}
-                          className="font-mono text-[9px] text-white/50 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md transition duration-300 group-hover:text-white/75 group-hover:border-white/20"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Explore button */}
-                    <div className="flex items-center justify-start border-t border-white/5 pt-4">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.25em] text-[#ffb07a] transition-all duration-300 hover:border-[#ff8a3d]/45 hover:bg-[#ff7a32]/10 hover:text-white hover:shadow-[0_0_15px_rgba(255,122,50,0.2)]"
-                      >
-                        Explore Code
-                        <span className="text-xs transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-                      </a>
-                    </div>
-                  </div>
-                </article>
+                </BorderGlow>
               </div>
             ))}
 
@@ -526,7 +550,7 @@ function Projects() {
 
           {/* Progress Indicator Line */}
           <div className="absolute bottom-6 left-[10vw] right-[10vw] h-0.5 bg-white/5 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gradient-to-r from-[#ff7a32] to-[#ffa149] shadow-[0_0_8px_rgba(255,122,50,0.6)] transition-all duration-75"
               style={{ width: `${scrollProgress * 100}%` }}
             />
