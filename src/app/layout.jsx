@@ -9,6 +9,10 @@ const inter = Inter({
 export const metadata = {
   title: "Ravija Hettiarachchi | Portfolio",
   description: "Secure journeys through curiosity and constant learning. Cybersecurity enthusiast and undergraduate ICT student.",
+  icons: {
+    icon: "/tablogo.png",
+    apple: "/tablogo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
